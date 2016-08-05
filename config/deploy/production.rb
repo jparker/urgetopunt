@@ -1,4 +1,4 @@
-server 'albatross.urgetopunt.com', roles: [:web], user: 'john', port: 22222
+server 'albatross.urgetopunt.com', roles: [:web], user: 'urgetopunt', port: 22222
 
 namespace :bundle do
   desc 'Install bundled gems'
