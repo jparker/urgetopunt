@@ -1,6 +1,6 @@
 server 'curlew.urgetopunt.com', roles: [:web], user: 'john', port: 22222
 
-namespace :bundler do
+namespace :bundle do
   desc 'Install bundled gems'
   task :install do
     on roles(:all) do
