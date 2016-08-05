@@ -3,6 +3,7 @@ lock '3.6.0'
 
 set :application, 'urgetopunt'
 set :repo_url, 'git@github.com:jparker/urgetopunt.git'
+set :use_sudo, false
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -21,7 +22,7 @@ set :repo_url, 'git@github.com:jparker/urgetopunt.git'
 # set :format_options, command_output: true, log_file: 'log/capistrano.log', color: :auto, truncate: :auto
 
 # Default value for :pty is false
-# set :pty, true
+set :pty, true
 
 # Default value for :linked_files is []
 # append :linked_files, 'config/database.yml', 'config/secrets.yml'
@@ -34,3 +35,20 @@ set :repo_url, 'git@github.com:jparker/urgetopunt.git'
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+
+namespace :jekyll do
+  desc 'Build site with jekyll'
+  task :build do
+    on roles(:web) do
+      within release_path do
+        execute "BUNDLE_PATH=#{shared_path.join 'bundle'} " \
+          "BUNDLE_GEMFILE=#{release_path.join 'Gemfile'} "  \
+          "bundle exec jekyll build "                       \
+          "--destination #{release_path.join '_site'} "     \
+          "--source #{release_path}"
+      end
+    end
+  end
+end
+
+after 'deploy:updated', 'jekyll:build'
