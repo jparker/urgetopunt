@@ -1,0 +1,136 @@
+---
+title: SSL Gotcha with Puppet and Ruby 1.9.2
+layout: post
+categories: puppet
+---
+
+I've been preparing to build up a new
+[Puppet](http://puppet.puppetlabs.com) installation, and as I've been
+deploying applications running on Ruby 1.9.2 lately, I thought it would
+be preferable to run Puppet under Ruby 1.9.2 as well. I've only begun
+the work, and I did run into a strange gotcha with SSL, but I seem to
+have gotten past it.
+
+My test installation consists of two identical [Debian
+6.0](http://www.debian.org) virtual machines running inside
+[VirtualBox](http://www.virtualbox.org) on a Mac. I started with a bare
+minimal install and ensured name resolution was working properly on both
+machines. The puppet master returns its hostname as "puppet.local"; the
+client returns its hostname as "client.local". There are entries for
+both of these hostnames in <tt>/etc/hosts</tt> on each virtual
+machine, and they are able to ping each other by name.
+
+Next, I ran the following bootstrap script on each machine to install
+Ruby 1.9.2-p290 and the [puppet gem](http://rubygems.org/gems/puppet).
+
+```bash
+#!/bin/bash
+
+set -e
+
+PATH=/sbin:/usr/sbin:/usr/local/bin:/bin:/usr/bin
+
+useradd -M -r puppet
+apt-get update
+apt-get dist-upgrade
+apt-get install -y build-essential zlib1g-dev libssl-dev libreadline-dev git-core curl ntp
+
+git clone git://github.com/sstephenson/ruby-build.git /root/ruby-build
+cd /root/ruby-build
+sh ./install.sh
+
+ruby-build 1.9.2-p290 /usr/local
+gem install puppet --no-ri --no-rdoc
+```
+
+Then, on the machine designated to become the puppet master, I performed
+the following to bring the puppet master daemon up.
+
+```
+# puppet master --genconfig > /etc/puppet.conf
+# mkdir -p /etc/puppet/manifests
+# touch /etc/puppet/manifests/site.pp
+# puppet master --no-daemonize --verbose --debug
+```
+
+Finally I ran the puppet agent on the client expecting the client to
+send a certificate signing request to the puppet master which I could
+then sign to authorize the client.
+
+```
+# puppet agent --no-daemonize --verbose --debug --onetime
+```
+
+Instead, the puppet agent bailed out with the following error message:
+
+```
+err: Could not request certificate: SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed.  This is often because the time is out of sync on the server or client
+Exiting; failed to retrieve certificate and waitforcert is disabled
+```
+
+Gah! The puppet master never even logged the connection -- the agent
+aborted immediately because it was unable to verify the certificate
+authority provided by the puppet master. The error message suggests
+clocks being out of sync is a common cause of such problems, but I
+verified the clocks on both machines were perfectly in sync. In fact,
+the bootstrap script installs ntp for just this purpose.
+
+(The clock synchronization problem stems from the fact that the puppet
+master's CA certificate is only valid between two dates determined with
+the certificate is generated. If the clock on the client is, for
+whatever reason, set ahead of the certificate's expiration date or
+behind the certificate's inaugration date, it will reject the
+certificate. You can check the validity dates by running the following
+command on the puppet master:
+
+```
+# openssl x509 -text -noout -in /etc/puppet/ssl/certs/ca.pem | grep -A2 Validity
+```
+
+In my case, the current time on the puppet client was well within the
+valid date range of the puppet master's CA.)
+
+It turns out, this is a [known
+issue](http://projects.puppetlabs.com/issues/9084) with the way Ruby
+1.9.2 handles SSL certificate validations. One option is to downgrade
+the puppet client to Ruby 1.8.7. The puppet agent works fine, but this
+is not a desirable solution since I started the project with the goal of
+deploying application servers running Ruby 1.9.2. Another possibility is
+to install Ruby 1.8.7, initialize the puppet client and then upgrade to
+Ruby 1.9.2 after the initial SSL verification has taken place and
+<tt>/etc/puppet/ssl</tt> on the client has been populated. That's
+reasonably easy to build into the bootstrap script, but it's hardly
+desirable. And I suspect I'd just run into the same problem again if I
+had to regenerate the puppet master's CA certificate for any reason.
+
+Wouldn't it be nice if someone had already figured out how to enable
+Ruby 1.9.2 to accept the puppet master's CA certificate? [Someone
+has](http://groups.google.com/group/puppet-users/msg/72bf694d4e2f3012).
+It turns out, all Ruby 1.9.2 needs is to find a copy of the puppet
+master CA certificate (or a symlink to it) in OpenSSL's certificates
+directory with a filename correspoding to a hash of the certificate
+subject.
+
+The first step is to copy <tt>/etc/puppet/ssl/certs/ca.pem</tt> from
+the puppet master to the puppet client. (This is one of those tasks that
+should be easily added to the bootstrap script I will use to bring up
+new puppet clients.) Next, a symlink to that file needs to be added to
+the OpenSSL certificates directory. This is the <tt>certs</tt>
+directory which resides underneath the directory returned by running
+<kbd>openssl&nbsp;version&nbsp;-d</kbd>. On Debian this is
+<tt>/usr/lib/ssl/certs</tt> (which is really just a symlink to
+<tt>/etc/ssl/certs</tt>). Finally, create the symlink to
+<tt>ca.pem</tt> using OpenSSL to calculate the hash value for the
+symlink name.
+
+```
+# ln -s /etc/puppet/ssl/certs/ca.pem /usr/lib/ssl/certs/$(openssl x509 -hash -noout -in /etc/puppet/ssl/certs/ca.pem).0
+```
+
+After performing these steps, running <kbd>puppet&nbsp;agent</kbd> for the
+first time (or again, but after <tt>/etc/puppet</tt> has been
+removed on the client) under Ruby 1.9.2 works like a charm. This is as
+far as I've gotten with this project so far. I don't know if there are
+any more gotchas with running Puppet under Ruby 1.9.2, but this one
+stumped me for long enough that I thought it was worth sharing a
+solution.
