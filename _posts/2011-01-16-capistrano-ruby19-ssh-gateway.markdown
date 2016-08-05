@@ -1,7 +1,7 @@
 ---
 title: Capistrano, Ruby 1.9 and SSH Gateways
 layout: post
-categories: capistrano
+tags: capistrano
 ---
 
 **UPDATE 2011-05-05 16:17 PST**: It looks like this has [been

@@ -1,7 +1,7 @@
 ---
 title: Pondering Pickled Patterns
 layout: post
-categories: cucumber
+tags: cucumber
 ---
 
 For me [Pickle](http://github.com/ianwhite/pickle) is what made

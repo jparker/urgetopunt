@@ -1,7 +1,7 @@
 ---
 title: RSpec + Spork Ignoring Filters
 layout: post
-categories: rspec
+tags: rspec
 ---
 
 I'm posting this as a reminder to myself and as Google fodder to raise

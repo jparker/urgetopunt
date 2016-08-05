@@ -3,7 +3,7 @@
 ---
 @charset "utf-8";
 
-
+@import 'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Open+Sans:400,400i,800|Source+Code+Pro';
 
 // Our variables
 $base-font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -52,10 +52,18 @@ $on-laptop:        800px;
         "syntax-highlighting"
 ;
 
+body {
+  margin-top: 70px;
+}
+
 .navbar-brand {
-  font-family: "Roboto Condensed", $base-font-family;
+  font-family: "Open Sans Condensed", $base-font-family;
 }
 
 .posts-list a {
-  font-family: "Roboto Slab", $base-font-family;
+  font-family: "Open Sans", $base-font-family;
+}
+
+code, kbd, pre, tt {
+  font-family: "Source Code Pro", Menlo, Monaco, Consolas, "Courier New", monospace;
 }

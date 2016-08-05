@@ -1,7 +1,7 @@
 ---
 title: Fibonacci Sequence in a Hash
 layout: post
-categories: ruby
+tags: ruby
 ---
 
 Being able to instantiate a Hash that calculates Fibonacci numbers is

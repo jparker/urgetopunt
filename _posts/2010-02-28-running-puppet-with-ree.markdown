@@ -1,7 +1,7 @@
 ---
 title: How Do You Run Puppet with Ruby Enterprise Edition?
 layout: post
-categories: puppet
+tags: puppet
 ---
 
 **UPDATE 2010-03-11:** Jeff McCune notes in the comments that this issue

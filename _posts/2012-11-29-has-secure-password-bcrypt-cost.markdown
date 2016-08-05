@@ -1,7 +1,7 @@
 ---
 title: Lowering BCrypt cost with has_secure_password
 layout: post
-categories: rails
+tags: rails
 ---
 
 One of the strengths of an algorithm like

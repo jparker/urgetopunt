@@ -1,7 +1,7 @@
 ---
 title: Rails Source Annotations and RSpec
 layout: post
-categories: rspec
+tags: rspec
 ---
 
 By default Rails' [source

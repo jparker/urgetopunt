@@ -1,7 +1,7 @@
 ---
 title: Password validation and has_secure_password
 layout: post
-categories: rails
+tags: rails
 ---
 
 **UPDATE 2012-11-29:** Actually, it appears this will be [a moot point

@@ -1,10 +1,10 @@
 ---
 title: Using RVM from Launchd Scripts on OS X
 layout: post
-categories: rvm osx
+tags: rvm osx
 ---
 
-I use [Launchd](/osx/2009/08/30/launchd-for-cron-jobs.html) to run some
+I use [Launchd](/2009/08/30/launchd-for-cron-jobs.html) to run some
 scripts on a Mac with cron-like regularity. (OS X provides cron, but
 Launchd is apparently the *preferred* approach.) Many of those scripts
 are written in [Ruby](http://www.ruby-lang.org/), and I'm trying to

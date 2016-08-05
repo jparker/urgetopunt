@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Base64.strict_encode64
-categories: ruby
+tags: ruby
 ---
 
 Ruby 1.9 introduced a nice addition to the Base64 module:

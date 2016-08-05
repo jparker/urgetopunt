@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Execute Ruby or Python Scripts from Vim
-categories: vim
+tags: vim
 ---
 
 While developing Ruby script using Vim I frequently want to execute the

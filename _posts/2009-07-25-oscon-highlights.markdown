@@ -1,7 +1,7 @@
 ---
 title: OSCON Highlights
 layout: post
-categories: oscon
+tags: oscon
 ---
 
 OSCON is over. While there were a number of interesting sessions, the

@@ -1,11 +1,11 @@
 ---
 title: Better Conditional Sum in Google Spreadsheet
 layout: post
-categories: googledocs
+tags: googledocs
 ---
 
 In the [original
-article](/googledocs/2009/05/09/google-spreadsheet-filter-sum.html) I
+article](/2009/05/09/google-spreadsheet-filter-sum.html) I
 described using
 <code>SUM()</code> and <code>FILTER()</code> in a [Google
 Docs](http://docs.google.com/) spreadsheet to calculate the sum over a

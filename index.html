@@ -1,13 +1,18 @@
 ---
 layout: default
+title: urge•to•punt technologies
 ---
 
-<ul class="list-unstyled posts-list">
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-      <br>
-      <small class="text-uppercase">{{ post.date | date: "%b %-d, %Y" }}</small>
-    </li>
-  {% endfor %}
-</ul>
+<div class="row">
+  <div class="col-sm-offset-3">
+    <ul class="list-unstyled posts-list">
+      {% for post in site.posts %}
+        <li>
+          <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          <br>
+          <small class="text-uppercase">{{ post.date | date: "%b %-d, %Y" }}</small>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

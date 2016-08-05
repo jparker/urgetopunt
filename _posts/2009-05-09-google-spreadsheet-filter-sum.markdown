@@ -1,7 +1,7 @@
 ---
 title: Conditional Sum in Google Spreadsheet
 layout: post
-categories: googledocs
+tags: googledocs
 ---
 
 It's the simplest things I always forget. Hopefully I'll remember this
@@ -24,4 +24,4 @@ column D from row 2 onwards for which the value of the corresponding
 cell in column E equals "food".
 
 **UPDATE**: As is so often the case when I learn something, there is a
-[better way](/googledocs/2009/11/06/google-spreadsheet-sumif.html).
+[better way](/2009/11/06/google-spreadsheet-sumif.html).

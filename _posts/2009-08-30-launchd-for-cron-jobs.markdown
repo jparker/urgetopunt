@@ -1,7 +1,7 @@
 ---
 title: Launchd for Cron Jobs
 layout: post
-categories: osx
+tags: osx
 ---
 
 Although cron is nominally supported on OS X, the preferred alternative

@@ -25,7 +25,7 @@ One of the benefits of
 [autotest](http://www.zenspider.com/ZSS/Products/ZenTest/) is that it
 can save you time. It's not saving you time when you spend 15 minutes
 trying to figure out why it isn't running any of the tests from
-<code>vendor\_controller\_test.rb</code>. Be good to your tools, and
+<tt>vendor_controller_test.rb</tt>. Be good to your tools, and
 they will be good to you. Tell them **exactly** what it is you'd like to
 do, and they will be happy to oblige. Read the
 [documentation](http://zentest.rubyforge.org/ZenTest) about a feature

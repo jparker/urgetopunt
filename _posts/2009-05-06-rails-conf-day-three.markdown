@@ -9,7 +9,7 @@ with Jake Scruggs. Aside from [rcov](http://eigenclass.org/hiki.rb?rcov)
 and the stats rake task in Rails I haven't yet spent much time studying
 code metrics. Jake touched on a number of different tools available
 today, each of which looked quite interesting and each of which is (or
-can be) used within [metric\_fu](http://metric-fu.rubyforge.org/). The
+can be) used within [metric_fu](http://metric-fu.rubyforge.org/). The
 metric\_fu rake tasks generate reports which can provide useful
 information on where you might need to focus your refactoring efforts by
 identifying potential problem spots like overly complex methods and

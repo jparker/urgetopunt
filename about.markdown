@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: About this place
 permalink: /about/
 ---
 
@@ -12,3 +12,7 @@ of technologies including
 [JavaScript](https://en.wikipedia.org/wiki/JavaScript),
 [PostgreSQL](http://postgresql.org), and
 [Amazon Web Services](https://aws.amazon.com).
+It is run by a reformed physicist who has left behind a bloody trail of
+poorly-documented software. Now, by adhering to Test Driven Development and
+other sound software development principles, he seeks to make amends of the
+needless suffering this code has caused.

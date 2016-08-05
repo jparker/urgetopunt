@@ -1,7 +1,21 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="{{ site.url }}">urgetopunt</a>
+      <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{{ site.url }}"><strong>urge·to·punt</strong> tech·nol·o·gies</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{{ "/about" | prepend: site.baseurl }}"><i class="fa fa-info fa-fw"></i> About</a></li>
+        <li><a href="https://github.com/jparker"><i class="fa fa-github-square fa-fw"></i> GitHub</a></li>
+        <li><a href="https://twitter.com/urgetopunt"><i class="fa fa-twitter-square fa-fw"></i> Twitter</a></li>
+        <li><a href="https://linkedin.com/in/urgetopunt"><i class="fa fa-linkedin-square fa-fw"></i> LinkedIn</a></li>
+      </ul>
     </div>
   </div>
 </nav>

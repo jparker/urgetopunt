@@ -1,7 +1,7 @@
 ---
 title: Gem Dependencies for Devise
 layout: post
-categories: devise
+tags: devise
 ---
 
 I recently worked with [devise](https://github.com/plataformatec/devise)

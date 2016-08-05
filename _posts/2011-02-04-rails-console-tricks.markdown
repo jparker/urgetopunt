@@ -1,7 +1,7 @@
 ---
 title: Useful Objects in the Rails Console
 layout: post
-categories: rails
+tags: rails
 ---
 
 The Rails console is a wonderful place to be if you need to feel things

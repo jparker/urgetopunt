@@ -1,7 +1,7 @@
 ---
 title: Creating and submitting forms with jQuery in Firefox
 layout: post
-categories: jquery firefox
+tags: [jquery, firefox]
 ---
 
 There's an interesting gotcha when creating and submitting forms using

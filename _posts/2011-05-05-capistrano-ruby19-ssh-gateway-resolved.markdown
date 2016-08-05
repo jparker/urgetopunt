@@ -1,11 +1,11 @@
 ---
 title: Capistrano, Ruby 1.9 and SSH Gateways — Resolved!
 layout: post
-categories: capistrano
+tags: capistrano
 ---
 
 A few months ago [I
-posted](/capistrano/2011/01/16/capistrano-ruby19-ssh-gateway.html) about
+posted](/2011/01/16/capistrano-ruby19-ssh-gateway.html) about
 inconsistent performance when running
 [capistrano](https://github.com/capistrano/capistrano/wiki) under [Ruby
 1.9](http://www.ruby-lang.org) when SSH traffic was routed through a
@@ -17,7 +17,7 @@ I discovered this when installing capistrano 2.6.0. Reading through the
 updates I saw some promising references to a thread deadlocking issue
 the existed under Ruby 1.9. After installing the new version of
 capistrano (and net-ssh-gateway) I re-ran the tests described in my
-[previous post](/capistrano/2011/01/16/capistrano-ruby19-ssh-gateway.html), and
+[previous post](/2011/01/16/capistrano-ruby19-ssh-gateway.html), and
 sure enough, the improvement is outstanding!
 
 {:.table.table-bordered.table-hover.table-striped}

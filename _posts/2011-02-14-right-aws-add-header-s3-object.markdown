@@ -1,7 +1,7 @@
 ---
 title: Adding a Header to an Existing S3 Object
 layout: post
-categories: s3
+tags: s3
 ---
 
 Two-thirds of the way through a substantial bulk upload of objects to

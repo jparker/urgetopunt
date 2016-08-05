@@ -1,7 +1,7 @@
 ---
 title: Using ERB in YAML Configuration File
 layout: post
-categories: rails
+tags: rails
 ---
 
 A while back in [Railscast

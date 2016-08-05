@@ -1,7 +1,7 @@
 ---
 title: Parsing Google Data XML with Nokogiri
 layout: post
-categories: nokogiri
+tags: nokogiri
 ---
 
 I recently starting working on a project which needs to consume Google's
