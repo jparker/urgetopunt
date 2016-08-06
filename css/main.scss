@@ -56,12 +56,16 @@ body {
   margin-top: 70px;
 }
 
-.navbar-brand {
+.navbar {
   font-family: "Open Sans Condensed", $base-font-family;
 }
 
 .posts-list a {
   font-family: "Open Sans", $base-font-family;
+}
+
+h1, h2, h3 {
+  font-family: "Open Sans Condensed", $base-font-family;
 }
 
 code, kbd, pre, tt {
