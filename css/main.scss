@@ -6,7 +6,7 @@
 @import 'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Open+Sans:400,400i,800|Source+Code+Pro';
 
 // Our variables
-$base-font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $base-font-size:   16px;
 $base-font-weight: 400;
 $small-font-size:  $base-font-size * 0.875;
@@ -58,10 +58,6 @@ body {
 
 .navbar {
   font-family: "Open Sans Condensed", $base-font-family;
-}
-
-.posts-list a {
-  font-family: "Open Sans", $base-font-family;
 }
 
 h1, h2, h3 {
