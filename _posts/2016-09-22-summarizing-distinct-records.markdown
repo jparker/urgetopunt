@@ -611,7 +611,8 @@ In closing, let's look at all the code together.
 # app/controllers/jobs_controller.rb
 class JobsController < ApplicationController
   def index
-    @jobs = Job.includes :categories
+    @jobs = Job.includes(:categories)
+      .page(params[:page]).per(params[:per])
   end
 end
 
