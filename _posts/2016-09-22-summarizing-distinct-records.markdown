@@ -221,6 +221,7 @@ SELECT DISTINCT "jobs"."id"
 FROM "jobs"
   LEFT OUTER JOIN "categories_jobs" ON "categories_jobs"."job_id" = "jobs"."id"
   LEFT OUTER JOIN "categories" ON "categories"."id" = "categories_jobs"."category_id"
+
 SELECT SUM("jobs"."rate") FROM "jobs" WHERE "jobs"."id" IN (2, 1)
 ```
 
