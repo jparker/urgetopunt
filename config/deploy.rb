@@ -1,9 +1,14 @@
 # config valid only for current version of Capistrano
-lock '3.6.0'
+lock '3.11.0'
 
 set :application, 'urgetopunt'
 set :repo_url, 'git@github.com:jparker/urgetopunt.git'
 set :use_sudo, false
+
+if ENV['CAP_SSH_GATEWAY']
+  ssh_command = "ssh #{ENV['CAP_SSH_GATEWAY']} -W %h:%p -A"
+  set :ssh_options, proxy: Net::SSH::Proxy::Command.new(ssh_command)
+end
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
