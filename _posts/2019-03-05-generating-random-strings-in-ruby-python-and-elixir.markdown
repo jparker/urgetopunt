@@ -103,7 +103,7 @@ warned.)
 alphabet = Enum.to_list(?a..?z) ++ Enum.to_list(?0..?9)
 length = 12
 
-Enum.take_random(alphabet, 12) # => 'g5qe0dl3b1kp'
+Enum.take_random(alphabet, length) # => 'g5qe0dl3b1kp'
 ```
 
 Once again, pretty easy, but wait a minute. How is this possible? I've made the
